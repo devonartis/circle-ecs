@@ -1,10 +1,10 @@
 machine:
   environment:
     PATH: "$PATH:~/$CIRCLE_PROJECT_REPONAME/bin"
-    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
-    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-    ACCOUNT_ID: $ACCOUNT_ID
+    AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
+    AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
+    AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
+    ACCOUNT_ID: "$ACCOUNT_ID"
 
   python:
     version: 2.7.9
@@ -14,7 +14,7 @@ dependencies:
   post:
     - curl -L -o ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5rc1/jq-linux-x86_64-static && chmod +x ~/bin/jq
     - curl -L https://github.com/docker/compose/releases/download/1.5.0/docker-compose-`uname -s`-`uname -m` > ../bin/docker-compose && chmod +x ../bin/docker-compose
-    - docker build --rm=false -t bellkev/circle-ecs:$CIRCLE_SHA1 . | cat # workaround progress weirdness
+    - docker build --rm=false -t $ACCOUNT_ID/circle-ecs:$CIRCLE_SHA1 . | cat # workaround progress weirdness
     - docker pull bellkev/nginx-base:stable | cat
 test:
   override:
