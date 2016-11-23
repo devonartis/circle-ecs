@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ba0b6ec-7c12-4275-9307-5c9dc450466b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/circle.yml.back" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/circle.yml" afterPath="$PROJECT_DIR$/circle.yml" />
     </list>
@@ -27,8 +28,8 @@
       <file leaf-file-name="deploy.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="510">
+              <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -37,9 +38,51 @@
       <file leaf-file-name="circle.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/circle.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="108" selection-start-line="2" selection-start-column="108" selection-end-line="2" selection-end-column="108" />
+            <state relative-caret-position="656">
+              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="circle.yml.back" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/circle.yml.back">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="108" />
+              <folding>
+                <marker date="1479901227000" expanded="true" signature="0:408" ph="machine: &lt;4 keys&gt;" />
+                <marker date="1479901227000" expanded="true" signature="11:124" ph="pre: &lt;1 item&gt;" />
+                <marker date="1479901227000" expanded="true" signature="26:124" ph="curl -sSL ..." />
+                <marker date="1479901227000" expanded="true" signature="127:352" ph="environmen...: &lt;5 keys&gt;" />
+                <marker date="1479901227000" expanded="true" signature="150:188" ph="$PATH:~/$C..." />
+                <marker date="1479901227000" expanded="true" signature="212:230" ph="$AWS_ACCES..." />
+                <marker date="1479901227000" expanded="true" signature="255:274" ph="$AWS_DEFAU..." />
+                <marker date="1479901227000" expanded="true" signature="302:324" ph="$AWS_SECRE..." />
+                <marker date="1479901227000" expanded="true" signature="341:352" ph="$ACCOUNT_I..." />
+                <marker date="1479901227000" expanded="true" signature="357:383" ph="python: &lt;1 key&gt;" />
+                <marker date="1479901227000" expanded="true" signature="378:383" ph="2.7.9" />
+                <marker date="1479901227000" expanded="true" signature="386:408" ph="services: &lt;1 item&gt;" />
+                <marker date="1479901227000" expanded="true" signature="402:408" ph="docker" />
+                <marker date="1479901227000" expanded="true" signature="409:977" ph="dependenci...: &lt;1 key&gt;" />
+                <marker date="1479901227000" expanded="true" signature="425:977" ph="post: &lt;4 items&gt;" />
+                <marker date="1479901227000" expanded="true" signature="437:559" ph="curl -L -o..." />
+                <marker date="1479901227000" expanded="true" signature="566:726" ph="curl -L ht..." />
+                <marker date="1479901227000" expanded="true" signature="839:895" ph="docker bui..." />
+                <marker date="1479901227000" expanded="true" signature="934:977" ph="docker pul..." />
+                <marker date="1479901227000" expanded="true" signature="978:1150" ph="test: &lt;1 key&gt;" />
+                <marker date="1479901227000" expanded="true" signature="986:1150" ph="override: &lt;4 items&gt;" />
+                <marker date="1479901227000" expanded="true" signature="1002:1011" ph="nosetests" />
+                <marker date="1479901227000" expanded="true" signature="1018:1068" ph="../bin/doc...: &lt;1 key&gt;" />
+                <marker date="1479901227000" expanded="true" signature="1064:1068" ph="true" />
+                <marker date="1479901227000" expanded="true" signature="1075:1082" ph="sleep 5" />
+                <marker date="1479901227000" expanded="true" signature="1089:1150" ph="curl --ret..." />
+                <marker date="1479901227000" expanded="true" signature="1151:1223" ph="deployment: &lt;1 key&gt;" />
+                <marker date="1479901227000" expanded="true" signature="1165:1223" ph="prod: &lt;2 keys&gt;" />
+                <marker date="1479901227000" expanded="true" signature="1183:1189" ph="master" />
+                <marker date="1479901227000" expanded="true" signature="1194:1223" ph="commands: &lt;1 item&gt;" />
+                <marker date="1479901227000" expanded="true" signature="1212:1223" ph="./deploy.s..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,6 +173,7 @@
       <list>
         <option value="$PROJECT_DIR$/deploy.sh" />
         <option value="$PROJECT_DIR$/circle.yml" />
+        <option value="$PROJECT_DIR$/circle2.yml" />
       </list>
     </option>
   </component>
@@ -486,14 +530,21 @@
       <option name="project" value="LOCAL" />
       <updated>1479901131585</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated Circle.yml">
+      <created>1479901237049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1479901237049</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="43" width="1440" height="807" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -604,18 +655,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/circle.yml.back">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="108" />
+          <folding>
+            <marker date="1479901227000" expanded="true" signature="0:408" ph="machine: &lt;4 keys&gt;" />
+            <marker date="1479901227000" expanded="true" signature="11:124" ph="pre: &lt;1 item&gt;" />
+            <marker date="1479901227000" expanded="true" signature="26:124" ph="curl -sSL ..." />
+            <marker date="1479901227000" expanded="true" signature="127:352" ph="environmen...: &lt;5 keys&gt;" />
+            <marker date="1479901227000" expanded="true" signature="150:188" ph="$PATH:~/$C..." />
+            <marker date="1479901227000" expanded="true" signature="212:230" ph="$AWS_ACCES..." />
+            <marker date="1479901227000" expanded="true" signature="255:274" ph="$AWS_DEFAU..." />
+            <marker date="1479901227000" expanded="true" signature="302:324" ph="$AWS_SECRE..." />
+            <marker date="1479901227000" expanded="true" signature="341:352" ph="$ACCOUNT_I..." />
+            <marker date="1479901227000" expanded="true" signature="357:383" ph="python: &lt;1 key&gt;" />
+            <marker date="1479901227000" expanded="true" signature="378:383" ph="2.7.9" />
+            <marker date="1479901227000" expanded="true" signature="386:408" ph="services: &lt;1 item&gt;" />
+            <marker date="1479901227000" expanded="true" signature="402:408" ph="docker" />
+            <marker date="1479901227000" expanded="true" signature="409:977" ph="dependenci...: &lt;1 key&gt;" />
+            <marker date="1479901227000" expanded="true" signature="425:977" ph="post: &lt;4 items&gt;" />
+            <marker date="1479901227000" expanded="true" signature="437:559" ph="curl -L -o..." />
+            <marker date="1479901227000" expanded="true" signature="566:726" ph="curl -L ht..." />
+            <marker date="1479901227000" expanded="true" signature="839:895" ph="docker bui..." />
+            <marker date="1479901227000" expanded="true" signature="934:977" ph="docker pul..." />
+            <marker date="1479901227000" expanded="true" signature="978:1150" ph="test: &lt;1 key&gt;" />
+            <marker date="1479901227000" expanded="true" signature="986:1150" ph="override: &lt;4 items&gt;" />
+            <marker date="1479901227000" expanded="true" signature="1002:1011" ph="nosetests" />
+            <marker date="1479901227000" expanded="true" signature="1018:1068" ph="../bin/doc...: &lt;1 key&gt;" />
+            <marker date="1479901227000" expanded="true" signature="1064:1068" ph="true" />
+            <marker date="1479901227000" expanded="true" signature="1075:1082" ph="sleep 5" />
+            <marker date="1479901227000" expanded="true" signature="1089:1150" ph="curl --ret..." />
+            <marker date="1479901227000" expanded="true" signature="1151:1223" ph="deployment: &lt;1 key&gt;" />
+            <marker date="1479901227000" expanded="true" signature="1165:1223" ph="prod: &lt;2 keys&gt;" />
+            <marker date="1479901227000" expanded="true" signature="1183:1189" ph="master" />
+            <marker date="1479901227000" expanded="true" signature="1194:1223" ph="commands: &lt;1 item&gt;" />
+            <marker date="1479901227000" expanded="true" signature="1212:1223" ph="./deploy.s..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="510">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/circle.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="108" selection-start-line="2" selection-start-column="108" selection-end-line="2" selection-end-column="108" />
+        <state relative-caret-position="656">
+          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
           <folding />
         </state>
       </provider>
