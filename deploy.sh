@@ -15,9 +15,9 @@ deploy_image() {
     #docker tag $CIRCLE_SHA1:circle-ecs aws_account_id.dkr.ecr.us-east-1.amazon aws.com/circle-ecs:$CIRCLE_SHA1
     #docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
     #docker push devonartis/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
-    docker tag circle-ecs:latest 942538004694.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:latest
+    docker tag $CIRCLE_SHA1:latest $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
     #docker push aws_account_id.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
-    docker push 942538004694.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:latest
+    docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:latest
 
 }
 
