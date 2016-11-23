@@ -1,54 +1,30 @@
 machine:
-  timezone:
-    Europe/Copenhagen
+  environment:
+    PATH: "$PATH:~/$CIRCLE_PROJECT_REPONAME/bin"
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+    ACCOUNT_ID: $ACCOUNT_ID
 
-  php:
-    version: 5.3.3
-
-  # This will be added to the `/etc/hosts` file
-  hosts:
-    wppusher-plugin.dev: 127.0.0.1
-
+  python:
+    version: 2.7.9
+  services:
+    - docker
 dependencies:
-  pre:
-    # No password is required for the MySQL user `ubuntu`
-    - mysql -u ubuntu -e "create database wordpress"
-
-    # Use cURL to fetch WP-CLI
-    - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-    # Make sure WP-CLI is executable
-    - chmod +x wp-cli.phar
-
-    # Download WordPress into `wordpress` directory
-    - ./wp-cli.phar core download --allow-root --path=wordpress
-
-    # Generate `wp-config.php` file
-    - ./wp-cli.phar core config --allow-root --dbname=wordpress --dbuser=ubuntu --dbhost=localhost --path=wordpress
-
-    # Install WordPress
-    - ./wp-cli.phar core install --allow-root --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://wppusher-plugin.dev:8080 --title=WordPress --path=wordpress
-
-    # Clonse WP Pusher plugin from GitHub
-    - git clone git@github.com:petersuhm/wppusher-plugin.git wordpress/wp-content/plugins/wppusher
-
-    # And use WP-CLI to activate it
-    - ./wp-cli.phar plugin activate wppusher --path=wordpress
-
   post:
-    # Copy Apache conf into `site-available`
-    - cp ~/wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
-
-    # Use `a2ensite` to create a symlink for the config
-    - a2ensite apache-ci.conf
-
-    # Restart the Apache server
-    - sudo service apache2 restart
-
+    - curl -L -o ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5rc1/jq-linux-x86_64-static && chmod +x ~/bin/jq
+    - curl -L https://github.com/docker/compose/releases/download/1.5.0/docker-compose-`uname -s`-`uname -m` > ../bin/docker-compose && chmod +x ../bin/docker-compose
+    - docker build --rm=false -t bellkev/circle-ecs:$CIRCLE_SHA1 . | cat # workaround progress weirdness
+    - docker pull bellkev/nginx-base:stable | cat
 test:
   override:
-    # This is just for us to see that the WP Pusher plugin was actually installed and is active
-    - ./wp-cli.phar plugin list --path=wordpress
-
-    # Finally, run our Behat features
-    - vendor/bin/beh
+    - nosetests
+    - ../bin/docker-compose up:
+        background: true
+    - sleep 5
+    - curl --retry 10 --retry-delay 5 localhost:8000 | grep "Hello"
+deployment:
+  prod:
+    branch: master
+    commands:
+      - ./deploy.sh
