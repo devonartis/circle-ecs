@@ -9,11 +9,15 @@ JQ="jq --raw-output --exit-status"
 
 deploy_image() {
 
-    aws ecr get-login
-    docker tag $CIRCLE_SHA1:circle-ecs aws_account_id.dkr.ecr.us-east-1.amazon aws.com/circle-ecs:$CIRCLE_SHA1
+    aws ecr get-login --region us-east-1
+    #aws ecr get-login
+    docker build -t circle-ecs .
+    #docker tag $CIRCLE_SHA1:circle-ecs aws_account_id.dkr.ecr.us-east-1.amazon aws.com/circle-ecs:$CIRCLE_SHA1
     #docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
     #docker push devonartis/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
-    docker push aws_account_id.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+    docker tag circle-ecs:latest 942538004694.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:latest
+    #docker push aws_account_id.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+    docker push 942538004694.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:latest
 
 }
 

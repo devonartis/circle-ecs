@@ -1,4 +1,6 @@
 machine:
+  pre:
+      - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
   environment:
     PATH: "$PATH:~/$CIRCLE_PROJECT_REPONAME/bin"
   python:
