@@ -27,8 +27,8 @@
       <file leaf-file-name="deploy.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deploy.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+            <state relative-caret-position="680">
+              <caret line="84" column="16" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -515,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479902850900</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated deploy.sh&#10;">
+      <created>1479903188393</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1479903188393</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -557,7 +564,8 @@
     <MESSAGE value="Updated deploy" />
     <MESSAGE value="Updated Circle.yml" />
     <MESSAGE value="Testing some wp changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing some wp changes&#10;" />
+    <MESSAGE value="Updated deploy.sh&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated deploy.sh&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -652,8 +660,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+        <state relative-caret-position="680">
+          <caret line="84" column="16" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
           <folding />
         </state>
       </provider>
