@@ -23,8 +23,8 @@ deploy_image() {
     #aws ecr get-login --region us-east-1
     #docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
     #docker push $DOCKER_USERNAME/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
-    docker tag $CIRCLE_SHA1:circle-ecs aws_account_id.dkr.ecr.us-east-1.amazon aws.com/circle-ecs:$CIRCLE_SHA1
-    docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+    #docker tag $CIRCLE_SHA1:circle-ecs aws_account_id.dkr.ecr.us-east-1.amazon aws.com/circle-ecs:$CIRCLE_SHA1
+    #docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
 
 }
 
@@ -35,7 +35,7 @@ make_task_def() {
     task_template='[
 	{
 	    "name": "uwsgi",
-	    "image": "devonartis/circle-ecs:%s",
+	    "image": "%s/circle-ecs:%s",
 	    "essential": true,
 	    "memory": 200,
 	    "cpu": 10
