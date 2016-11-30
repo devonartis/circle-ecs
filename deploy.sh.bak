@@ -9,8 +9,22 @@ JQ="jq --raw-output --exit-status"
 
 deploy_image() {
 
-    docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
-    docker push bellkev/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
+    eval $(aws ecr get-login --region us-east-1)
+    docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+
+    #docker push 
+    #docker build -t circle-ecs .
+    #docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
+    #docker push devonartis/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
+    #docker tag $CIRCLE_SHA1:latest $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+    #docker push aws_account_id.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+    #docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:latest
+
+    #aws ecr get-login --region us-east-1
+    #docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
+    #docker push $DOCKER_USERNAME/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
+    #docker tag $CIRCLE_SHA1:circle-ecs aws_account_id.dkr.ecr.us-east-1.amazon aws.com/circle-ecs:$CIRCLE_SHA1
+    #docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
 
 }
 
@@ -21,7 +35,7 @@ make_task_def() {
     task_template='[
 	{
 	    "name": "uwsgi",
-	    "image": "bellkev/circle-ecs:%s",
+	    "image": "%s/circle-ecs:%s",
 	    "essential": true,
 	    "memory": 200,
 	    "cpu": 10
@@ -31,7 +45,7 @@ make_task_def() {
 	    "links": [
 		"uwsgi"
 	    ],
-	    "image": "bellkev/nginx-base:stable",
+	    "image": "devonartis/nginx-base:stable",
 	    "portMappings": [
 		{
 		    "containerPort": 8000,
@@ -64,11 +78,11 @@ register_definition() {
 deploy_cluster() {
 
     host_port=80
-    family="circle-ecs-cluster"
+    family="ecscompose-devonartis"
 
     make_task_def
     register_definition
-    if [[ $(aws ecs update-service --cluster circle-ecs --service circle-ecs-service --task-definition $revision | \
+    if [[ $(aws ecs update-service --cluster-name wpDartis --service circle-ecs-service --task-definition $revision | \
                    $JQ '.service.taskDefinition') != $revision ]]; then
         echo "Error updating service."
         return 1
@@ -77,7 +91,7 @@ deploy_cluster() {
     # wait for older revisions to disappear
     # not really necessary, but nice for demos
     for attempt in {1..30}; do
-        if stale=$(aws ecs describe-services --cluster circle-ecs --services circle-ecs-service | \
+        if stale=$(aws ecs describe-services --wpDartis circle-ecs --services circle-ecs-service | \
                        $JQ ".services[0].deployments | .[] | select(.taskDefinition != \"$revision\") | .taskDefinition"); then
             echo "Waiting for stale deployments:"
             echo "$stale"
