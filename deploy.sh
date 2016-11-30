@@ -11,8 +11,10 @@ deploy_image() {
     
     #docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
     eval $(aws ecr get-login)
-    docker push bellkev/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
-
+    docker build -t circle-ecs .
+    docker tag circle-ecs:$CIRCLE_SHA1  942538004694.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
+    #docker push bellkev/circle-ecs:$CIRCLE_SHA1 | cat # workaround progress weirdness
+    docker push 942538004694.dkr.ecr.us-east-1.amazonaws.com/circle-ecs:$CIRCLE_SHA1
 }
 
 # reads $CIRCLE_SHA1, $host_port
